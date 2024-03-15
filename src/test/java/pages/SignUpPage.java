@@ -16,10 +16,9 @@ public class SignUpPage extends BasePage {
     String websiteUrl = "https://www.demoblaze.com/index.html";
     String signUpButtonMainPage = "signin2";
     String inputUserName = "sign-username";
-    String userNameAlreadyUsed = "Test1234525";
-
-    String previouslyUsedPassword = "UniquePass";
     String password = "sign-password";
+    String userNameAlreadyUsed = "Test1234525";
+    String previouslyUsedPassword = "UniquePass";
     String clickOnSignUpButton = "//*[@onclick='register()']";
 
 
@@ -28,26 +27,31 @@ public class SignUpPage extends BasePage {
     }
 
 
-    public void NavigateToDemoBlazeWebsite() {
+    public void navigateToDemoBlazeWebsite() {
         driver.get(websiteUrl);
     }
 
-    public void SignUpButtonMainPageClick() {
+    public void signUpButtonMainPageClick() {
 
         driver.findElement(By.id(signUpButtonMainPage)).click();
     }
 
-    public void InputUserName() throws InterruptedException {
+    public void inputUserName() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.id(inputUserName)).sendKeys(randomUserName);
     }
 
-    public void UserNameAlreadyUsed()throws InterruptedException{
+    public void userNameAlreadyUsed()throws InterruptedException{
         Thread.sleep(1000);
         driver.findElement(By.id(inputUserName)).sendKeys(userNameAlreadyUsed);
     }
 
-    public void InputPassword() {
+    public void emptyUserName()throws InterruptedException{
+        Thread.sleep(1000);
+        driver.findElement(By.id(inputUserName)).sendKeys("");
+    }
+
+    public void inputPassword() {
         driver.findElement(By.id(password)).sendKeys("UniquePass" + generateNumber());
 
     }
@@ -56,11 +60,15 @@ public class SignUpPage extends BasePage {
         driver.findElement(By.id(password)).sendKeys(previouslyUsedPassword);
     }
 
-    public void ClickOnTheSignUpButton() {
+    public void emptyPassword(){
+        driver.findElement(By.id(password)).sendKeys("");
+    }
+
+    public void clickOnTheSignUpButton() {
         driver.findElement(By.xpath(clickOnSignUpButton)).click();
     }
 
-    public void SignUpMessage() throws InterruptedException {
+    public void signUpMessage() throws InterruptedException {
         Thread.sleep(1000);
         String signUpText = driver.switchTo().alert().getText();
         switch (signUpText) {
@@ -69,6 +77,9 @@ public class SignUpPage extends BasePage {
                 break;
             case "This user already exist.":
                 Assert.assertEquals(signUpText, "This user already exist.");
+                break;
+            case "Please fill out Username and Password.":
+                Assert.assertEquals(signUpText, "Please fill out Username and Password.");
                 break;
             default:
                 Assert.fail("Unexepected message: " + signUpText);
