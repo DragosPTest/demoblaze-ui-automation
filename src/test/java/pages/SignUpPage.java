@@ -1,11 +1,8 @@
 package pages;
-
 import basepage.BasePage;
-import com.github.javafaker.Faker;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.Random;
 
 public class SignUpPage extends BasePage {
