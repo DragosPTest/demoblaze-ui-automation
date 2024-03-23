@@ -1,5 +1,3 @@
-
-@regression
 Feature: demoblaze.com - SignUp Page
 
   Background:

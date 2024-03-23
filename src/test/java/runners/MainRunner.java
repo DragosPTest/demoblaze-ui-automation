@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"src/test/resources/SignUp.feature"},
+@CucumberOptions(features = {"src/test/resources/SignUp.feature","src/test/resources/Login.feature"},
         tags = "@regression",
         plugin = {"pretty",
                 "json:target/cucumber_json_reports/portal.json",

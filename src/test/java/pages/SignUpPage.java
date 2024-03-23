@@ -1,8 +1,10 @@
 package pages;
+
 import basepage.BasePage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+
 import java.util.Random;
 
 public class SignUpPage extends BasePage {
@@ -20,7 +22,6 @@ public class SignUpPage extends BasePage {
     String userNameAlreadyUsed = "Test1234525";
     String previouslyUsedPassword = "UniquePass";
     String clickOnSignUpButton = "//*[@onclick='register()']";
-
 
     public int generateNumber() {
         return new Random().nextInt(9999);
@@ -41,12 +42,12 @@ public class SignUpPage extends BasePage {
         driver.findElement(By.id(inputUserName)).sendKeys(randomUserName);
     }
 
-    public void userNameAlreadyUsed()throws InterruptedException{
+    public void userNameAlreadyUsed() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.id(inputUserName)).sendKeys(userNameAlreadyUsed);
     }
 
-    public void emptyUserName()throws InterruptedException{
+    public void emptyUserName() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.id(inputUserName)).sendKeys("");
     }
@@ -56,11 +57,11 @@ public class SignUpPage extends BasePage {
 
     }
 
-    public void previouslyUsedPassword(){
+    public void previouslyUsedPassword() {
         driver.findElement(By.id(password)).sendKeys(previouslyUsedPassword);
     }
 
-    public void emptyPassword(){
+    public void emptyPassword() {
         driver.findElement(By.id(password)).sendKeys("");
     }
 
@@ -86,6 +87,7 @@ public class SignUpPage extends BasePage {
                 driver.switchTo().alert().accept();
         }
 
-
     }
+
+
 }
