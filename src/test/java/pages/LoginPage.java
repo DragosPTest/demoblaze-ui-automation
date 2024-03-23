@@ -5,10 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
-import static infrastructure.driver.Setup.driver;
 
 public class LoginPage extends BasePage {
 
