@@ -64,6 +64,7 @@ public class LoginPage extends BasePage {
             String loginSuccessMessage = driver.findElement(By.id(nameOfUser)).getText();
             Assert.assertEquals(loginMessage, loginSuccessMessage);
         }
+        //d
     }
 
 
