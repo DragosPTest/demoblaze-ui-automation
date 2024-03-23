@@ -44,6 +44,11 @@ public class LoginSteps {
         this.loginPage.inputIncorrectUserName(incorrectUserName);
     }
 
+    @And("I pass an empty username ")
+    public void i_pass_an_empty_username() throws InterruptedException {
+        this.loginPage.emptyUserName();
+    }
+
     @And("I pass a password {word}")
     public void i_pass_a_correct_password_for_the_login(String correctPassword) {
         this.loginPage.inputCorrectPassword(correctPassword);
@@ -52,6 +57,11 @@ public class LoginSteps {
     @And("I pass an incorrect password {word}")
     public void i_pass_an_incorrect_password_for_the_login(String incorrectPasssword) {
         this.loginPage.inputIncorrectPassword(incorrectPasssword);
+    }
+
+    @And("I pass a password ")
+    public void i_pass_an_empty_password() {
+        this.loginPage.emptyPassword();
     }
 
     @When("I click on the Login button")
@@ -63,6 +73,13 @@ public class LoginSteps {
     public void i_should_a_successful_validation_message(String message) throws InterruptedException {
         this.loginPage.loginMessage(message);
     }
+
+
+    @And("I pass a username ")
+    public void i_pass_a_username() throws InterruptedException {
+        this.loginPage.emptyUserName();
+    }
+
 
 
 }

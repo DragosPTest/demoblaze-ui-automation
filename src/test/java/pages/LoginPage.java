@@ -35,6 +35,11 @@ public class LoginPage extends BasePage {
         driver.findElement(By.id(loginUserName)).sendKeys(correctUserName);
     }
 
+    public void emptyUserName()throws InterruptedException {
+        Thread.sleep(2000);
+        driver.findElement(By.id(loginUserName)).sendKeys("");
+    }
+
     public void inputIncorrectUserName(String incorrectUserName) throws InterruptedException {
         Thread.sleep(2000);
         driver.findElement(By.id(loginUserName)).sendKeys(incorrectUserName);
@@ -46,6 +51,10 @@ public class LoginPage extends BasePage {
 
     public void inputIncorrectPassword(String incorrectPasssword) {
         driver.findElement(By.id(loginPassword)).sendKeys(incorrectPasssword);
+    }
+
+    public void emptyPassword(){
+        driver.findElement(By.id(loginUserName)).sendKeys("");
     }
 
 
@@ -64,7 +73,7 @@ public class LoginPage extends BasePage {
             String loginSuccessMessage = driver.findElement(By.id(nameOfUser)).getText();
             Assert.assertEquals(loginMessage, loginSuccessMessage);
         }
-        //d
+
     }
 
 
