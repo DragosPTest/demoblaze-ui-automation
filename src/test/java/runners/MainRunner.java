@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/SignUp.feature","src/test/resources/Login.feature"},
-        tags = "@regression",
+        tags = "@login",
         plugin = {"pretty",
                 "json:target/cucumber_json_reports/portal.json",
                 "html:target/portal-html/report/report.html"},
@@ -20,7 +20,7 @@ public class MainRunner {
     public static void init() {
 
     }
-//asd
+
 
     @AfterClass
     public static void teardown() {
