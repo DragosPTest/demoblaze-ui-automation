@@ -16,12 +16,12 @@ public class SignUpPage extends BasePage {
     }
 
     private String websiteUrl = "https://www.demoblaze.com/index.html";
-    private String signUpButtonMainPage = "signin2";
-    private String inputUserName = "sign-username";
-    private String password = "sign-password";
+    private String signUpButtonMainPageElement = "signin2";
+    private String inputUserNameElement = "sign-username";
+    private String passwordElement = "sign-password";
     private String userNameAlreadyUsed = "Test1234525";
     private String previouslyUsedPassword = "UniquePass";
-    private String clickOnSignUpButton = "//*[@onclick='register()']";
+    private String clickOnSignUpButtonElement = "//*[@onclick='register()']";
 
     public int generateNumber() {
         return new Random().nextInt(9999);
@@ -34,39 +34,39 @@ public class SignUpPage extends BasePage {
 
     public void signUpButtonMainPageClick() {
 
-        driver.findElement(By.id(signUpButtonMainPage)).click();
+        driver.findElement(By.id(signUpButtonMainPageElement)).click();
     }
 
     public void inputUserName() throws InterruptedException {
         Thread.sleep(1000);
-        driver.findElement(By.id(inputUserName)).sendKeys(randomUserName);
+        driver.findElement(By.id(inputUserNameElement)).sendKeys(randomUserName);
     }
 
     public void userNameAlreadyUsed() throws InterruptedException {
         Thread.sleep(1000);
-        driver.findElement(By.id(inputUserName)).sendKeys(userNameAlreadyUsed);
+        driver.findElement(By.id(inputUserNameElement)).sendKeys(userNameAlreadyUsed);
     }
 
     public void emptyUserName() throws InterruptedException {
         Thread.sleep(1000);
-        driver.findElement(By.id(inputUserName)).sendKeys("");
+        driver.findElement(By.id(inputUserNameElement)).sendKeys("");
     }
 
     public void inputPassword() {
-        driver.findElement(By.id(password)).sendKeys("UniquePass" + generateNumber());
+        driver.findElement(By.id(passwordElement)).sendKeys("UniquePass" + generateNumber());
 
     }
 
     public void previouslyUsedPassword() {
-        driver.findElement(By.id(password)).sendKeys(previouslyUsedPassword);
+        driver.findElement(By.id(passwordElement)).sendKeys(previouslyUsedPassword);
     }
 
     public void emptyPassword() {
-        driver.findElement(By.id(password)).sendKeys("");
+        driver.findElement(By.id(passwordElement)).sendKeys("");
     }
 
     public void clickOnTheSignUpButton() {
-        driver.findElement(By.xpath(clickOnSignUpButton)).click();
+        driver.findElement(By.xpath(clickOnSignUpButtonElement)).click();
     }
 
     public void signUpMessage() throws InterruptedException {
