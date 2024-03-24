@@ -21,11 +21,6 @@ public class LoginSteps {
 
     }
 
-    @Given("I navigate to demoblaze.com website")
-    public void i_navigate_to_demoblaze_com() {
-        this.loginPage.navigateToDemoBlazeWebsite();
-
-    }
 
     @And("I click on the LogIn button")
     public void iClickOnTheLogInButton() throws InterruptedException {
@@ -44,8 +39,8 @@ public class LoginSteps {
         this.loginPage.inputIncorrectUserName(incorrectUserName);
     }
 
-    @And("I pass an empty username ")
-    public void i_pass_an_empty_username() throws InterruptedException {
+    @And("I pass a username ")
+    public void i_pass_a_username() throws InterruptedException {
         this.loginPage.emptyUserName();
     }
 
@@ -75,10 +70,7 @@ public class LoginSteps {
     }
 
 
-    @And("I pass a username ")
-    public void i_pass_a_username() throws InterruptedException {
-        this.loginPage.emptyUserName();
-    }
+
 
 
 

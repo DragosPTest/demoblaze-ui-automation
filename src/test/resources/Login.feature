@@ -2,7 +2,7 @@
 Feature: demoblaze.com - Login Page
 
   Background:
-    Given I navigate to demoblaze.com website
+    Given I navigate to demoblaze.com
     And I click on the LogIn button
 
   Scenario Outline: Validate Successful & Unsuccessful Login
@@ -15,4 +15,4 @@ Feature: demoblaze.com - Login Page
       | JohnDoe1234  | JohnDoe1234  | Welcome JohnDoe1234                    |
       | JohnDoe1234  | JohnDoe12345 | Wrong password.                        |
       | JohnDoe12345 | JohnDoe1234  | User does not exist.                   |
-      |              |              | Please fill out Username and Password  |
+      |              |              | Please fill out Username and Password. |

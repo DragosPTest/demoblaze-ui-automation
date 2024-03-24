@@ -15,13 +15,13 @@ public class SignUpPage extends BasePage {
         this.randomUserName = "JohnDoe" + generateNumber();
     }
 
-    String websiteUrl = "https://www.demoblaze.com/index.html";
-    String signUpButtonMainPage = "signin2";
-    String inputUserName = "sign-username";
-    String password = "sign-password";
-    String userNameAlreadyUsed = "Test1234525";
-    String previouslyUsedPassword = "UniquePass";
-    String clickOnSignUpButton = "//*[@onclick='register()']";
+    private String websiteUrl = "https://www.demoblaze.com/index.html";
+    private String signUpButtonMainPage = "signin2";
+    private String inputUserName = "sign-username";
+    private String password = "sign-password";
+    private String userNameAlreadyUsed = "Test1234525";
+    private String previouslyUsedPassword = "UniquePass";
+    private String clickOnSignUpButton = "//*[@onclick='register()']";
 
     public int generateNumber() {
         return new Random().nextInt(9999);

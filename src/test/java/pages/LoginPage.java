@@ -12,18 +12,11 @@ public class LoginPage extends BasePage {
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
-
-    String websiteUrl = "https://www.demoblaze.com/index.html";
-    String loginButtonMainPage = "login2";
-    String loginUserName = "loginusername";
-    String loginPassword = "loginpassword";
-    String loginButton = "//*[@id=\"logInModal\"]//div[3]/button[2]";
-    String nameOfUser = "nameofuser";
-
-
-    public void navigateToDemoBlazeWebsite() {
-        driver.get(websiteUrl);
-    }
+    private String loginButtonMainPage = "login2";
+    private String loginUserName = "loginusername";
+    private String loginPassword = "loginpassword";
+    private String loginButton = "//*[@id=\"logInModal\"]//div[3]/button[2]";
+    private String nameOfUser = "nameofuser";
 
     public void clickOnLoginButtonMainPage() throws InterruptedException {
         Thread.sleep(1000);
@@ -35,7 +28,7 @@ public class LoginPage extends BasePage {
         driver.findElement(By.id(loginUserName)).sendKeys(correctUserName);
     }
 
-    public void emptyUserName()throws InterruptedException {
+    public void emptyUserName() throws InterruptedException {
         Thread.sleep(2000);
         driver.findElement(By.id(loginUserName)).sendKeys("");
     }
@@ -53,7 +46,7 @@ public class LoginPage extends BasePage {
         driver.findElement(By.id(loginPassword)).sendKeys(incorrectPasssword);
     }
 
-    public void emptyPassword(){
+    public void emptyPassword() {
         driver.findElement(By.id(loginUserName)).sendKeys("");
     }
 
