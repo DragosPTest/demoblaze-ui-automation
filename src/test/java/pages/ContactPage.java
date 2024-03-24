@@ -17,7 +17,6 @@ public class ContactPage extends BasePage {
     private String recipientEmailElement = "recipient-email";
     private String recipientnameElement = "recipient-name";
     private String messageTextElement = "message-text";
-
     private String sendMessageButtonElement = "//*[@id=\"exampleModal\"]//button[2]";
 
     public int generateNumber() {
