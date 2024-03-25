@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.LoginPage;
@@ -21,12 +20,10 @@ public class LoginSteps {
 
     }
 
-
     @And("I click on the LogIn button")
     public void iClickOnTheLogInButton() throws InterruptedException {
         this.loginPage.clickOnLoginButtonMainPage();
     }
-
 
     @And("I pass a username {word}")
     public void i_pass_a_correct_username_for_the_login(String correctUserName) throws InterruptedException {
@@ -68,10 +65,6 @@ public class LoginSteps {
     public void i_should_a_successful_validation_message(String message) throws InterruptedException {
         this.loginPage.loginMessage(message);
     }
-
-
-
-
 
 
 }

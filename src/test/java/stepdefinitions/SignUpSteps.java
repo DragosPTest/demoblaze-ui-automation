@@ -46,8 +46,8 @@ public class SignUpSteps {
     }
 
     @And("the UserName field is left blank")
-    public void theUserNameFieldIsLeftBlank() throws InterruptedException{
-       this.signUpPage.emptyUserName();
+    public void theUserNameFieldIsLeftBlank() throws InterruptedException {
+        this.signUpPage.emptyUserName();
     }
 
     @And("I pass an unique Password")
@@ -62,7 +62,7 @@ public class SignUpSteps {
 
     @And("the Password field is left blank")
     public void thePasswordFieldIsLeftBlank() {
-      this.signUpPage.emptyPassword();
+        this.signUpPage.emptyPassword();
     }
 
     @When("I click on the SignUp button")

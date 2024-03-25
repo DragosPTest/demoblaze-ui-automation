@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.Random;
 
 public class ContactPage extends BasePage {
-    public ContactPage(){
+    public ContactPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -23,34 +23,34 @@ public class ContactPage extends BasePage {
         return new Random().nextInt(9999);
     }
 
-    public void clickOnContactButton(){
+    public void clickOnContactButton() {
         driver.findElement(By.xpath(contactButtonElement)).click();
     }
 
-    public void contactPopUpForm()throws InterruptedException{
+    public void contactPopUpForm() throws InterruptedException {
         Thread.sleep(1000);
         String newMessage = driver.findElement(By.id(contactPopUpFormElement)).getText();
         Assert.assertEquals(newMessage, "New message");
     }
 
-    public void recipientEmail() throws InterruptedException{
+    public void recipientEmail() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.id(recipientEmailElement)).sendKeys("JohnDoe" + generateNumber() + "@mail.zzzz.com");
     }
 
-    public void recipientName(){
+    public void recipientName() {
         driver.findElement(By.id(recipientnameElement)).sendKeys("JohnDoe" + generateNumber());
     }
 
-    public void messageText(){
+    public void messageText() {
         driver.findElement(By.id(messageTextElement)).sendKeys("This is a test message");
     }
 
-    public void sendMessageButtonClick(){
+    public void sendMessageButtonClick() {
         driver.findElement(By.xpath(sendMessageButtonElement)).click();
     }
 
-    public void successfullySendingTheMessage(String message) throws InterruptedException{
+    public void successfullySendingTheMessage(String message) throws InterruptedException {
         Thread.sleep(1000);
         String thanksForTheMessage = driver.switchTo().alert().getText();
         Assert.assertEquals(thanksForTheMessage, message);
