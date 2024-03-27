@@ -13,3 +13,29 @@ Feature: demoblaze.com - Cart
       | phone   | Product added |
       | monitor | Product added |
       | laptop  | Product added |
+
+
+  Scenario: Validate the total price paid - Single Product
+    And I click on a product
+    And I add the product to cart
+    And the product is successfully added to the cart
+    When I click on Cart on navigation bar
+    Then I should see that the total price is equal with the product price
+
+
+  Scenario: Validate the total price paid - Multiple Products
+    And I click on the first product
+    And I add the product to cart
+    Then the product is successfully added to the cart
+    And I click on Home on navigation bar
+    And I click on the second product
+    And I add the product to cart
+    Then the product is successfully added to the cart
+    And I click on Home on navigation bar
+    And I click on the third product
+    When I add the product to cart
+    Then the product is successfully added to the cart
+    When I click on Cart on navigation bar
+    Then I should see that the total price is the sum of the prices of the first, second, and third products
+
+

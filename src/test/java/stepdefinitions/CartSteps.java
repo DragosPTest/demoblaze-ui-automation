@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.CartPage;
@@ -28,14 +29,69 @@ public class CartSteps {
         this.cartPage.clickOnLaptopProduct();
     }
 
+    @And("I click on a product")
+    public void iClickOnAProduct() {
+        this.cartPage.clickOnMonitorProduct();
+    }
+
+    @When("I add the product to cart")
+    public void iAddTheProductToCart() {
+        this.cartPage.clickOnAddToCartButton();
+    }
+
+    @And("I click on the first product")
+    public void iClickOnTheFirstProduct() {
+        this.cartPage.clickOnPhoneProduct();
+    }
+
+    @And("I click on the second product")
+    public void iClickOnTheSecondProduct() {
+        this.cartPage.clickOnMonitorProduct();
+
+    }
+
+    @And("I click on the third product")
+    public void iClickOnTheThirdProduct() {
+        this.cartPage.clickOnLaptopProduct();
+    }
+
+    @And("I click on Home on navigation bar")
+    public void iClickOnHomeOnNavigationBar() {
+        this.cartPage.clickOnHomeButtonMaiPage();
+    }
+
+
     @When("I click on Add to cart button")
     public void i_click_on_add_to_cart_button() {
         this.cartPage.clickOnAddToCartButton();
     }
 
+    @When("I click on Cart on navigation bar")
+    public void iClickOnCartOnNavigationBar() {
+        this.cartPage.clickOnCartButtonMainPage();
+    }
+
     @Then("I should see a successful validation pop-up Product added")
     public void i_should_see_a_successful_validation_pop_up_product_added() {
         this.cartPage.productAddedToCart();
+
+    }
+
+    @Then("I should see that the total price is equal with the product price")
+    public void iShouldSeeThatTheTotalPriceIsEqualWithTheProductPrice() {
+        this.cartPage.totalPriceSingleProduct();
+    }
+
+    @Then("the product is successfully added to the cart")
+    public void theProductIsSuccessfullyAddedToTheCart() {
+        this.cartPage.productAddedToCart();
+    }
+
+
+    @Then("I should see that the total price is the sum of the prices of the first, second, and third products")
+    public void iShouldSeeThatTheTotalPriceIsTheSumOfThePricesOfTheFirstSecondAndThirdProducts() {
+        this.cartPage.getThePriceOfProducts();
+        this.cartPage.sumOfProducts();
 
     }
 
