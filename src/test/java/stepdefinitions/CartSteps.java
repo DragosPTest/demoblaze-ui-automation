@@ -60,6 +60,12 @@ public class CartSteps {
         this.cartPage.clickOnHomeButtonMaiPage();
     }
 
+    @And("I click on delete button")
+    public void iClickOnDeleteButton() {
+        this.cartPage.clickOnDeleteButton();
+
+    }
+
 
     @When("I click on Add to cart button")
     public void i_click_on_add_to_cart_button() {
@@ -79,7 +85,7 @@ public class CartSteps {
 
     @Then("I should see that the total price is equal with the product price")
     public void iShouldSeeThatTheTotalPriceIsEqualWithTheProductPrice() {
-        this.cartPage.totalPriceSingleProduct();
+        this.cartPage.totalPrice();
     }
 
     @Then("the product is successfully added to the cart")
@@ -95,5 +101,8 @@ public class CartSteps {
 
     }
 
-
+    @Then("I should see that the product was successfully removed from the cart")
+    public void iShouldSeeThatTheProductWasSuccessfullyRemovedFromTheCart() {
+        this.cartPage.totalPrice();
+    }
 }

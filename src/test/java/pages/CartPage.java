@@ -5,7 +5,10 @@ import infrastructure.driver.Wait;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class CartPage extends BasePage {
     private Wait wait;
@@ -14,7 +17,6 @@ public class CartPage extends BasePage {
         PageFactory.initElements(driver, this);
         wait = new Wait(driver);
     }
-
     private String phoneElement = "//*[@id=\"tbodyid\"]/div[1]//h4/a";
     private String monitorElement = "//*[@id=\"tbodyid\"]/div[1]//h4/a";
     private String laptopElement = "//*[@id=\"tbodyid\"]/div[8]/div/div/h4/a";
@@ -22,14 +24,16 @@ public class CartPage extends BasePage {
     private String nextButtonElement = "next2";
     private String cartButtonMainPageElement = "//*[@id=\"navbarExample\"]//li[4]/a";
     private String homeButtonMainPageElement = "//*[@id=\"navbarExample\"]//li[1]/a";
+
+    private String deleteButtonElement = "//*[@id=\"tbodyid\"]//td[4]/a";
     private String totalPriceElement = "totalp";
     private String firstProductPriceElement = "//*[@id=\"tbodyid\"]//td[3]";
     private String secondProductPriceElement = "//*[@id=\"tbodyid\"]/tr[2]/td[3]";
     private String thirdProductPriceElement = "//*[@id=\"tbodyid\"]/tr[3]/td[3]";
-    String getTheFirstProductPrice;
-    String getTheSecondProductPrice;
-    String getTheThirdProductPrice;
-    String getTheTotalPriceOfAllProducts;
+    private String getTheFirstProductPrice;
+    private String getTheSecondProductPrice;
+    private String getTheThirdProductPrice;
+    private String getTheTotalPriceOfAllProducts;
 
     public void clickOnPhoneProduct() {
         wait.justSleep(1000);
@@ -63,20 +67,11 @@ public class CartPage extends BasePage {
         driver.findElement(By.xpath(homeButtonMainPageElement)).click();
     }
 
-    public void productAddedToCart() {
+    public void clickOnDeleteButton(){
         wait.justSleep(1000);
-        Alert alert = driver.switchTo().alert();
-        String productAddedMessage = alert.getText();
-        Assert.assertEquals(productAddedMessage, "Product added");
-        alert.accept();
+        driver.findElement(By.xpath(deleteButtonElement)).click();
     }
 
-    public void totalPriceSingleProduct() {
-        wait.justSleep(1000);
-        String productPrice = driver.findElement(By.xpath(firstProductPriceElement)).getText();
-        String totalPrice = driver.findElement(By.id(totalPriceElement)).getText();
-        Assert.assertEquals(productPrice, totalPrice);
-    }
 
     public void getThePriceOfProducts() {
         wait.justSleep(1000);
@@ -85,7 +80,25 @@ public class CartPage extends BasePage {
         getTheThirdProductPrice = driver.findElement(By.xpath(thirdProductPriceElement)).getText();
         getTheTotalPriceOfAllProducts = driver.findElement(By.id(totalPriceElement)).getText();
 
+    }
 
+    public void totalPrice() {
+        wait.justSleep(1000);
+        List<WebElement> cartItems = driver.findElements(By.xpath(firstProductPriceElement));
+        String totalPrice = driver.findElement(By.id(totalPriceElement)).getText();
+        if (cartItems.isEmpty()) {
+            Assert.assertEquals(totalPrice, "");
+        } else {
+            String productPrice = driver.findElement(By.xpath(firstProductPriceElement)).getText();
+            Assert.assertEquals(productPrice, totalPrice);
+        }
+    }
+    public void productAddedToCart() {
+        wait.justSleep(1000);
+        Alert alert = driver.switchTo().alert();
+        String productAddedMessage = alert.getText();
+        Assert.assertEquals(productAddedMessage, "Product added");
+        alert.accept();
     }
 
     public void sumOfProducts() {
@@ -97,5 +110,7 @@ public class CartPage extends BasePage {
         Assert.assertEquals(totalPrice, sumOfProductPrices);
 
     }
+
+
 
 }

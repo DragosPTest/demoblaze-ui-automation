@@ -39,3 +39,13 @@ Feature: demoblaze.com - Cart
     Then I should see that the total price is the sum of the prices of the first, second, and third products
 
 
+    Scenario: Validate successful deletion of a product from the cart
+      And I click on a product
+      And I add the product to cart
+      And the product is successfully added to the cart
+      When I click on Cart on navigation bar
+      And I click on delete button
+      Then I should see that the product was successfully removed from the cart
+
+
+
