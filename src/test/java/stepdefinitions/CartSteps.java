@@ -50,11 +50,6 @@ public class CartSteps {
 
     }
 
-    @And("I click on the third product")
-    public void iClickOnTheThirdProduct() {
-        this.cartPage.clickOnLaptopProduct();
-    }
-
     @And("I click on Home on navigation bar")
     public void iClickOnHomeOnNavigationBar() {
         this.cartPage.clickOnHomeButtonMaiPage();
@@ -104,5 +99,20 @@ public class CartSteps {
     @Then("I should see that the product was successfully removed from the cart")
     public void iShouldSeeThatTheProductWasSuccessfullyRemovedFromTheCart() {
         this.cartPage.totalPrice();
+    }
+
+    @Then("I should see that the total price represents the difference between the prices of the two products.")
+    public void iShouldSeeThatTheTotalPriceRepresentsTheDifferenceBetweenThePricesOfTheTwoProducts() {
+       this.cartPage.totalPriceSubtraction();
+    }
+    @And("I check the prices")
+    public void iCheckThePrices() {
+        this.cartPage.getThePriceOfProducts();
+    }
+
+
+    @And("I check the prices again")
+    public void iCheckThePricesAgain() {
+        this.cartPage.getThePriceOfProducts();
     }
 }

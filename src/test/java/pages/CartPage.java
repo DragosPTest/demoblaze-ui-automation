@@ -17,6 +17,7 @@ public class CartPage extends BasePage {
         PageFactory.initElements(driver, this);
         wait = new Wait(driver);
     }
+
     private String phoneElement = "//*[@id=\"tbodyid\"]/div[1]//h4/a";
     private String monitorElement = "//*[@id=\"tbodyid\"]/div[1]//h4/a";
     private String laptopElement = "//*[@id=\"tbodyid\"]/div[8]/div/div/h4/a";
@@ -24,16 +25,15 @@ public class CartPage extends BasePage {
     private String nextButtonElement = "next2";
     private String cartButtonMainPageElement = "//*[@id=\"navbarExample\"]//li[4]/a";
     private String homeButtonMainPageElement = "//*[@id=\"navbarExample\"]//li[1]/a";
-
     private String deleteButtonElement = "//*[@id=\"tbodyid\"]//td[4]/a";
     private String totalPriceElement = "totalp";
     private String firstProductPriceElement = "//*[@id=\"tbodyid\"]//td[3]";
     private String secondProductPriceElement = "//*[@id=\"tbodyid\"]/tr[2]/td[3]";
-    private String thirdProductPriceElement = "//*[@id=\"tbodyid\"]/tr[3]/td[3]";
+
     private String getTheFirstProductPrice;
     private String getTheSecondProductPrice;
-    private String getTheThirdProductPrice;
     private String getTheTotalPriceOfAllProducts;
+
 
     public void clickOnPhoneProduct() {
         wait.justSleep(1000);
@@ -67,7 +67,7 @@ public class CartPage extends BasePage {
         driver.findElement(By.xpath(homeButtonMainPageElement)).click();
     }
 
-    public void clickOnDeleteButton(){
+    public void clickOnDeleteButton() {
         wait.justSleep(1000);
         driver.findElement(By.xpath(deleteButtonElement)).click();
     }
@@ -75,11 +75,18 @@ public class CartPage extends BasePage {
 
     public void getThePriceOfProducts() {
         wait.justSleep(1000);
-        getTheFirstProductPrice = driver.findElement(By.xpath(firstProductPriceElement)).getText();
-        getTheSecondProductPrice = driver.findElement(By.xpath(secondProductPriceElement)).getText();
-        getTheThirdProductPrice = driver.findElement(By.xpath(thirdProductPriceElement)).getText();
-        getTheTotalPriceOfAllProducts = driver.findElement(By.id(totalPriceElement)).getText();
+        List<WebElement> firstProduct = driver.findElements(By.xpath(firstProductPriceElement));
+        List<WebElement> secondProduct = driver.findElements(By.xpath(secondProductPriceElement));
 
+        if (!firstProduct.isEmpty()) {
+            getTheFirstProductPrice = firstProduct.get(0).getText();
+        }
+
+        if (!secondProduct.isEmpty()) {
+            getTheSecondProductPrice = secondProduct.get(0).getText();
+        }
+
+        getTheTotalPriceOfAllProducts = driver.findElement(By.id(totalPriceElement)).getText();
     }
 
     public void totalPrice() {
@@ -93,6 +100,7 @@ public class CartPage extends BasePage {
             Assert.assertEquals(productPrice, totalPrice);
         }
     }
+
     public void productAddedToCart() {
         wait.justSleep(1000);
         Alert alert = driver.switchTo().alert();
@@ -104,13 +112,22 @@ public class CartPage extends BasePage {
     public void sumOfProducts() {
         int firstProductPrice = Integer.parseInt(getTheFirstProductPrice);
         int secondProductPrice = Integer.parseInt(getTheSecondProductPrice);
-        int thirdProductPrice = Integer.parseInt(getTheThirdProductPrice);
         int totalPrice = Integer.parseInt(getTheTotalPriceOfAllProducts);
-        int sumOfProductPrices = firstProductPrice + secondProductPrice + thirdProductPrice;
+        int sumOfProductPrices = firstProductPrice + secondProductPrice;
         Assert.assertEquals(totalPrice, sumOfProductPrices);
+
 
     }
 
+    public void totalPriceSubtraction() {
+        wait.justSleep(1000);
+        Integer firstProductPrice = (getTheFirstProductPrice != null) ? Integer.parseInt(getTheFirstProductPrice) : null;
+        int totalPrice = Integer.parseInt(getTheTotalPriceOfAllProducts);
+        int subtractionProductPrices = firstProductPrice - 0;
+        Assert.assertEquals(subtractionProductPrices, totalPrice);
 
+    }
 
 }
+
+
